@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - 3D Spark</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="Assets/Blender_icon.png" type="image/png">
+    <style>
+        /* Предотвращение мерцания */
+        body:not([data-theme]) { opacity: 0; }
+        body[data-theme] { opacity: 1; transition: opacity 0.4s; }
+        
+        /* Стили для центрирования контактной формы */
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 120px); /* Учитываем высоту header и footer */
+        }
+        
+        section {
+            max-width: 600px;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        input, textarea, button {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        button {
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 12px 20px;
+            font-size: 16px;
+        }
+    </style>
+    <script>
+        // Установка темы ДО загрузки страницы
+        document.documentElement.setAttribute('data-theme',
+          localStorage.getItem('theme') || 
+          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        );
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+    <header>
+        <div class="container">
+            <h1 class="logo">
+                3<img src="Assets/Blender_D.png" alt="D" class="logo-img">
+                <span>Spark</span>
+            </h1>
+            <nav>
+                <a href="index.html">Главная</a>
+                <a href="index.html#lessons">Уроки</a>
+                <a href="contact.html">Контакты</a>
+            </nav>
+            <div class="language-switcher" onclick="toggleLanguageMenu()">
+                <div class="selected-language">
+                    <img id="current-flag" src="Assets/ru_rounded_flag.png" alt="Flag" class="flag-icon">
+                    <span id="current-language">русский</span>
+                </div>
+                <div class="language-menu" id="language-menu">
+                    <div class="language-option" onclick="changeLanguage('en')">
+                        <img src="Assets/gb_rounded_flag.png" alt="English Flag" class="flag-icon">
+                        <span>English</span>
+                    </div>
+                    <div class="language-option" onclick="changeLanguage('hy')">
+                        <img src="Assets/hy_rounded_flag.png" alt="Armenian Flag" class="flag-icon">
+                        <span>Հայերեն</span>
+                    </div>
+                </div>
+            </div>
+            <button id="theme-toggle" class="theme-btn" aria-label="Переключить тему">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </div>
+    </header>
+    <main>
+        <section>
+            <h2>Контакты</h2>
+            <form action="#" method="POST">
+                <label for="name">Ваше имя:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Ваш email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Сообщение:</label>
+                <textarea id="message" name="message" required></textarea>
+                
+                <button type="submit">Отправить</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 3D Spark. Все права защищены.</p>
+    </footer>
+</div>
+<script src="js/lang.js"></script>
+<script src="js/themes.js"></script>
+</body>
+</html>
